@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import data from "../components/assets/all_product";
 import { Container, Grid, Typography, Button } from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import clp from "../components/clp";
 
 function Producto() {
   const [producto, setProducto] = useState(null);
@@ -38,15 +37,15 @@ function Producto() {
                 sx={{ mt: "30px" }}
               >
                 <b>precio: </b>
-                {clp(producto.precio_anterior)}
+                {producto.precio_anterior}
               </Typography>
               <Typography variant="h6" color="textSecondary">
                 <b>descuento: </b>
-                {clp(producto.precio_anterior - producto.nuevo_precio)}
+                {producto.precio_anterior - producto.nuevo_precio}
               </Typography>
               <Typography variant="h6" sx={{ mt: "30px", textAlign: "right" }}>
                 <b>descuento: </b>
-                {clp(producto.nuevo_precio)}
+                {producto.nuevo_precio}
               </Typography>
               <div style={{ textAlign: "right", marginTop: "15px" }}>
                 <Button

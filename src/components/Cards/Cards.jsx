@@ -7,9 +7,19 @@ import {
   Typography,
   Grid,
 } from "@mui/material";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function Cards({ data, titulo }) {
-  const producto = data; // => [{id: 1, nombre:"blabla",imagen: p1_img, nuevo_precio: 50000, precio_anterior: 80500,}]
+// function Cards({ data, titulo }) {
+//   const producto = data; // => [{id: 1, nombre:"blabla",imagen: p1_img, nuevo_precio: 50000, precio_anterior: 80500,}]
+
+const Cards = ({ data, titulo }) => {
+  const navigate = useNavigate();
+
+  const handleDivClick = (key) => {
+    navigate(`/producto/${key}`);
+  };
+
   return (
     <>
       <Container sx={{ my: "20px" }}>
@@ -20,7 +30,15 @@ function Cards({ data, titulo }) {
           {/* MAPEO */}
           {/* data.map( (elemento, index) => {} esto no () esto si )   ===> regla siempre el 1° elemento tene que tener la prop key */}
           {data.map((producto, index) => (
-            <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
+            <Grid
+              key={index}
+              item
+              xs={12}
+              sm={6}
+              md={4}
+              lg={3}
+              onClick={() => handleDivClick(producto.id)}
+            >
               {/* xs (extra-small): Pantallas extra pequeñas, típicamente teléfonos móviles. (0px y más)
 sm (small): Pantallas pequeñas, típicamente tablets en modo retrato. (600px y más)
 md (medium): Pantallas medianas, típicamente tablets en modo paisaje o laptops pequeñas. (900px y más)
@@ -67,6 +85,6 @@ xl (extra-large): Pantallas extra grandes, típicamente monitores grandes. (1536
       </Container>
     </>
   );
-}
+};
 
 export default Cards;
