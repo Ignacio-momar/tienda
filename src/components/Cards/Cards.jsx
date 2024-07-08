@@ -9,17 +9,21 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import clp from "../clp";
 
 // function Cards({ data, titulo }) {
 //   const producto = data; // => [{id: 1, nombre:"blabla",imagen: p1_img, nuevo_precio: 50000, precio_anterior: 80500,}]
 
+// orden de como van las cosardas
 const Cards = ({ data, titulo }) => {
+  /* 1° useState o parecidos */
   const navigate = useNavigate();
-
+  /* 2° constante o funciones */
   const handleDivClick = (key) => {
     navigate(`/producto/${key}`);
   };
-
+  /* 3° useEffect() */
+  /* consoles.log(data) */
   return (
     <>
       <Container sx={{ my: "20px" }}>
@@ -65,7 +69,7 @@ xl (extra-large): Pantallas extra grandes, típicamente monitores grandes. (1536
                       width: "50%",
                     }}
                   >
-                    {producto.precio_anterior}
+                    {clp(producto.precio_anterior)}
                   </Typography>
                   <Typography
                     variant="h6"
@@ -74,7 +78,7 @@ xl (extra-large): Pantallas extra grandes, típicamente monitores grandes. (1536
                       width: "50%",
                     }}
                   >
-                    {producto.nuevo_precio}
+                    {clp(producto.nuevo_precio)}
                   </Typography>
                 </CardActions>
               </Card>
